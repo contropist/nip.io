@@ -1,4 +1,4 @@
-# Copyright 2019 Exentrique Solutions Ltd
+# Copyright 2022 Exentrique Solutions Ltd
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,9 +14,10 @@
 
 from setuptools import setup
 
-setup(name="nip.io",
-      version="1.0",
-      packages=["nipio"],
-      tests_require=["mock", "assertpy"],
-      test_suite="nipio_tests",
-      )
+setup(
+    name="nip.io",
+    version="1.0",
+    packages=["nipio"],
+    tests_require=["mock", "assertpy", "types-mock"],
+    test_suite="nipio_tests",
+)

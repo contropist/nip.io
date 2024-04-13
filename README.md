@@ -1,6 +1,6 @@
 # NIP.IO
 
-[![Build Status](https://travis-ci.org/exentriquesolutions/nip.io.svg?branch=master)](https://travis-ci.org/exentriquesolutions/nip.io)
+![Build Status](https://github.com/exentriquesolutions/nip.io/actions/workflows/ci.yaml/badge.svg)
 
 Dead simple wildcard DNS for any IP Address.
 
@@ -30,6 +30,14 @@ environment variables override those:
 
 `NIPIO_SOA_NS`: SOA name server.
 
+`NIPIO_SOA_REFRESH`: SOA refresh.
+
+`NIPIO_SOA_RETRY`: SOA retry.
+
+`NIPIO_SOA_EXPIRY`: SOA expiry.
+
+`NIPIO_SOA_MINIMUM_TTL`: SOA minimum time-to-live (TTL).
+
 `NIPIO_NAMESERVERS`: A space-separated list of domain=ip nameserver pairs. Example: `ns1.nip.io=127.0.0.1 ns2.nip.io=127.0.0.1`.
 
 `NIPIO_WHITELIST`: A space-separated list of description=range pairs for whitelisted ranges in CIDR format.
@@ -38,3 +46,16 @@ An IP address must be in one of the whitelisted ranges for a response to be retu
 `NIPIO_BLACKLIST`: A space-separated list of description=ip blacklisted pairs. Example: `some_description=10.0.0.1 other_description=10.0.0.2`.
 
 This is useful if you're creating your own [Dockerfile](Dockerfile).
+
+## Troubleshooting
+
+* DNS Rebinding Protection
+
+  Some DNS resolvers, forwarders and routers have DNS rebinding protection which may result in 
+  failure to resolve local and private IP addresses. This service won't work in those situations.
+  However, you may [run a local nip.io instance](dns-rebind.md) in this case.
+  
+## Development
+
+If you'd like to develop and hack with nip.io, then the easiest way is to install [Poetry](https://python-poetry.org/)
+and then run `./build.sh` which invokes Poetry. `./build.sh` will run linting and tests as well.
